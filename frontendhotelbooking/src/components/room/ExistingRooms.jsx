@@ -4,6 +4,7 @@ import RoomFilter from "../common/RoomFilter"
 import RoomPaginator from "../common/RoomPaginator"
 import { Col } from 'react-bootstrap'
 import { FaEdit, FaEye, FaTrashAlt } from 'react-icons/fa'
+import { Link } from "react-router-dom"
 
 const ExistingRooms = () => {
   const[rooms, setRooms] = useState([{ id: "", roomType: "", roomPrice: "" }])
