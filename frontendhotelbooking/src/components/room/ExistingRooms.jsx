@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { getAllRooms } from '../utils/ApiFunctions'
+import { deleteRoom, getAllRooms } from '../utils/ApiFunctions'
 import RoomFilter from "../common/RoomFilter"
 import RoomPaginator from "../common/RoomPaginator"
 import { Col } from 'react-bootstrap'
+import { FaEdit, FaEye, FaTrashAlt } from 'react-icons/fa'
 
 const ExistingRooms = () => {
   const[rooms, setRooms] = useState([{ id: "", roomType: "", roomPrice: "" }])
@@ -45,6 +46,24 @@ const ExistingRooms = () => {
     setCurrentPage(pageNumber)
   }
 
+  const handleDelete = async(roomId) => {
+    try {
+      const result = await deleteRoom(roomId)
+      if (result === "") {
+        setSuccessMessage(`room no ${roomId} was delete`)
+        fetchRooms()
+      } else {
+        console.error(`error deleting room : ${result.message}`)
+      }
+    } catch (error) {
+      setErrorMessage(error.message)
+    }
+    setTimeout(() => {
+      setSuccessMessage("")
+      setErrorMessage("")
+    }, 3000)
+  }
+
   const calculateTotalPages = (filteredRooms, roomsPerPage, rooms) => {
     const totalRooms = filteredRooms.length > 0 ? filteredRooms.length : rooms.length
     return Math.ceil(totalRooms / roomsPerPage)
@@ -85,9 +104,21 @@ const ExistingRooms = () => {
                 <td>{room.id}</td>
                 <td>{room.roomType}</td>
                 <td>{room.roomPrice}</td>
-                <td>
-                  <button>View / Edit</button>
-                  <button>Delete</button>
+                <td className='gap-2'>
+                  <Link to={`/edit-room/${room.id}`}>
+                    <span className='btn btn-info btn-sm'>
+                      <FaEye />
+                    </span>
+                    <span className='btn btn-warning btn-sm'>
+                      <FaEdit />
+                    </span>
+                  </Link>
+
+                  <button
+                    className='btn btn-danger btn-sm'
+                    onClick={() => handleDelete(room.id)}>
+                      <FaTrashAlt />
+                  </button>
                 </td>
               </tr>
             ))}
