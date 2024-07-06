@@ -26,6 +26,7 @@ function App() {
             <Route path="/edit-room/:roomId" element={<EditRoom />} />
             <Route path='/add-room' element={<AddRoom />} />
             <Route path='/browse-all-rooms' element={<RoomListing />} />
+            <Route path='/admin' element={<Admin />} />
             
           </Routes>
         </Router>
