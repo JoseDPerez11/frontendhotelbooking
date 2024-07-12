@@ -90,7 +90,20 @@ export async function getBookingByConfirmationCode(confirmationCode) {
         const result = await api.get(`/bookings/confirmation/${confirmationCode}`)
         return result.data
     } catch (error) {
-        
+        if (error.response && error.response.data) {
+            throw new Error(error.response.data)
+        } else {
+            throw new Error(`error find booking: ${error.message}`)
+        }
+    }
+}
+
+export async function cancelBooking(bookingId) {
+    try {
+        const result = await api.delete(`/bookings/booking/${bookingId}/delete`)
+        return result.data
+    } catch (error) {
+        throw new Error(`error cancelling booking: ${error.message}`)
     }
 }
 
