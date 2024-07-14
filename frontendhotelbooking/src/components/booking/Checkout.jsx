@@ -1,6 +1,6 @@
 
 import React from 'react'
-import BookingForm from './BookingForm'
+import BookingForm from '../booking/BookingForm'
 
 const Checkout = () => {
   return (

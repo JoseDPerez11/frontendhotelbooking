@@ -1,6 +1,7 @@
 
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
+import Button from "react-bootstrap/Button"
 import { useNavigate } from 'react-router-dom'
 
 const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
@@ -32,16 +33,16 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
             <h4>Reservation Summary</h4>
 
             <p>
-                Fullname : <strong>{booking.guestName}</strong>
+                Fullname : <strong>{booking.guestFullName}</strong>
             </p>
             <p>
                 Email : <strong>{booking.guestEmail}</strong>
             </p>
             <p>
-                Check-In Date : <strong>{moment(booking.checkInDate).format("MMM DD YYYY")}</strong>
+                Check-In Date : <strong>{moment(booking.checkInDate).format("MMM Do YYYY")}</strong>
             </p>
             <p>
-                Check-Out Date : <strong>{moment(booking.checkOutDate).format("MMM DD YYYY")}</strong>
+                Check-Out Date : <strong>{moment(booking.checkOutDate).format("MMM Do YYYY")}</strong>
             </p>
             <p>
                 Number of Days : <strong>{numberOfDays}</strong>
@@ -50,10 +51,10 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
                 <h5>Number of Guests</h5>
 
                 <strong>
-                    Adult{booking.numberOfAdults > 1 ? "s" : ""} : {booking.numberOfAdults}
+                    Adult{booking.numOfAdults > 1 ? "s" : ""} : {booking.numOfAdults}
                 </strong>
                 <strong>
-                    Children : {booking.numberOfChildren}
+                    Children : {booking.numOfChildren}
                 </strong>
             </div>
 
