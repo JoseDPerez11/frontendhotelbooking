@@ -22,11 +22,6 @@ const BookingForm = () => {
 		numOfChildren: ""
 	})
 
-  const [roomInfo, setRoomInfo] = useState({
-    photo: "",
-    roomType: "",
-    roomPrice: ""
-  })
 
 	const { roomId } = useParams()
 	const navigate = useNavigate()
@@ -238,7 +233,7 @@ const BookingForm = () => {
 						</div>
 					</div>
 
-					<div className="col-md-6">
+					<div className="col-md-4">
 						{isSubmitted && (
 							<BookingSummary
 								booking={booking}
