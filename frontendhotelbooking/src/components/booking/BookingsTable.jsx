@@ -11,9 +11,9 @@ const BookingsTable = ({bookingInfo, handleBookingCancellation}) => {
     let filtered = bookingInfo
     if(startDate && endDate) {
       filtered = bookingInfo.filter((booking) => {
-        const bookingStartDate = parseISO(booking.checkInDate)
+        const bookingStarDate = parseISO(booking.checkInDate)
         const bookingEndDate = parseISO(booking.checkOutDate)
-        return bookingStartDate >= startDate && bookingEndDate <= endDate && bookingEndDate > startDate
+        return bookingStarDate >= startDate && bookingEndDate <= endDate && bookingEndDate > startDate
       })
     }
     setFilteredBookings(filtered)
@@ -60,7 +60,7 @@ const BookingsTable = ({bookingInfo, handleBookingCancellation}) => {
               <td>{ booking.totalNumOfGuests }</td>
               <td>{ booking.bookingConfirmationCode }</td>
               <td>
-                <button className='btn btn-dangerbtn-sm'
+                <button className='btn btn-danger btn-sm'
                   onClick={() => handleBookingCancellation(booking.id)} >
                   Cancel
                 </button>

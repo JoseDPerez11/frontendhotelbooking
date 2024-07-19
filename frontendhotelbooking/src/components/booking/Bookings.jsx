@@ -1,6 +1,8 @@
 
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { cancelBooking, getAllBookings } from "../utils/ApiFunctions"
+import Header from "../common/Header"
+import BookingsTable from "./BookingsTable"
 
 const Bookings = () => {
 
