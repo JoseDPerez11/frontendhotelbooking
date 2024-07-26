@@ -33,7 +33,7 @@ const Bookings = () => {
   }
 
   return (
-    <section className='container' style={{ backgroundColor: "whitesmoke" }} >
+    <section style={{ backgroundColor: "whitesmoke" }} >
       <Header title={"existing bookings"} />
       { error && <div className='text-danger' >{error}</div> }
       {isLoading ? (
